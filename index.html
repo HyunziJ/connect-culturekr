@@ -300,25 +300,25 @@
     }
 
     /* ===================================================
-       3. STORY & SYNOPSIS 섹션
+       섹션 공통 스타일 & 깔끔하게 통일된 1px 분할선
        =================================================== */
-    .story-section {
-      position: relative;
-      z-index: 10;
-      background: #0b0b0b;
-      padding: 120px 50px;
-      border-bottom: 1px solid #1c1c1c;
-    }
     .section-title {
       font-size: 2rem;
       font-weight: 700;
       letter-spacing: 1px;
       margin-bottom: 50px;
-      border-bottom: 1px solid #222;
+      border-bottom: 1px solid #222; /* 모든 섹션의 기준 분할선 */
       padding-bottom: 20px;
     }
 
-    /* [수정됨] 노란색 세로줄 제거 및 심플한 미니멀 카드 스타일 */
+    /* 3. STORY 섹션 */
+    .story-section {
+      position: relative;
+      z-index: 10;
+      background: #0b0b0b;
+      padding: 120px 50px;
+      /* 긴 불규칙 분할선(border-bottom) 제거 */
+    }
     .logline-card {
       background: #121212;
       border: 1px solid #1e1e1e;
@@ -339,8 +339,6 @@
       line-height: 1.7;
       word-break: keep-all;
     }
-
-    /* 캐릭터 카드 그리드 */
     .character-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -377,8 +375,6 @@
       line-height: 1.6;
       word-break: keep-all;
     }
-
-    /* 4막 시놉시스 타임라인 */
     .synopsis-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
@@ -386,7 +382,7 @@
     }
     .synopsis-card {
       background: #0f0f0f;
-      border-top: 2px solid #262626;
+      border-top: 1px solid #222;
       padding: 24px 20px;
     }
     .synopsis-act {
@@ -409,7 +405,7 @@
       word-break: keep-all;
     }
 
-    /* 포트폴리오 작업물 섹션 (Works) */
+    /* 4. WORKS 섹션 */
     .works-section {
       position: relative;
       z-index: 10;
@@ -458,26 +454,26 @@
       color: #777;
     }
 
-    /* 팀원 & 수업 섹션 (Credits) */
+    /* 5. CREDITS 섹션 */
     .credits-section {
       position: relative;
       z-index: 10;
       background: #0b0b0b;
-      padding: 0 50px 120px 50px;
+      padding: 60px 50px 120px 50px;
     }
     .course-badge {
-      font-size: 0.9rem;
-      color: #888;
+      font-size: 0.85rem;
+      color: #777;
       letter-spacing: 2px;
-      margin-bottom: 30px;
+      margin-bottom: 12px;
       text-transform: uppercase;
     }
     .credits-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
       gap: 30px;
-      border-top: 1px solid #1c1c1c;
-      padding-top: 40px;
+      /* 이중선을 만들던 border-top 제거 완료 */
+      padding-top: 10px;
     }
     .credit-box h4 {
       font-size: 1.1rem;
@@ -497,13 +493,13 @@
       line-height: 1.5;
     }
 
-    /* 문의하기 (CONTACT) 섹션 */
+    /* 6. CONTACT 섹션 */
     .contact-section {
       position: relative;
       z-index: 10;
-      background: #0e0e0e;
+      background: #0b0b0b;
       padding: 120px 50px;
-      border-top: 1px solid #1a1a1a;
+      /* 중복 border-top 제거 */
     }
     .contact-container {
       max-width: 800px;
@@ -682,7 +678,6 @@
   <section class="story-section" id="story">
     <h2 class="section-title">THE STORY</h2>
     
-    <!-- 노란 줄이 제거된 미니멀 로그라인 카드 -->
     <div class="logline-card">
       <h3>"같은 산에서 자랐지만 악기가 되는 계절도, 소리도 달랐던 두 나무의 이야기"</h3>
       <p>
@@ -691,7 +686,6 @@
       </p>
     </div>
 
-    <!-- 캐릭터 3인 소개 카드 -->
     <div class="character-grid">
       <div class="character-card">
         <div class="character-tag">Paulownia Tree</div>
@@ -718,7 +712,6 @@
       </div>
     </div>
 
-    <!-- 4막 시놉시스 서사 흐름 -->
     <div class="synopsis-grid">
       <div class="synopsis-card">
         <div class="synopsis-act">ACT 01</div>
@@ -752,7 +745,7 @@
     </div>
   </section>
 
-  <!-- 포트폴리오 작업물 섹션 (Works) -->
+  <!-- ================= 4. WORKS 섹션 ================= -->
   <section class="works-section" id="works">
     <h2 class="section-title">SELECTED WORKS</h2>
     <div class="work-grid">
@@ -784,10 +777,10 @@
     </div>
   </section>
 
-  <!-- 수업 및 제작진 섹션 -->
+  <!-- ================= 5. CREDITS 섹션 ================= -->
   <section class="credits-section" id="credits">
     <div class="course-badge">엔터컬쳐와 K-콘텐츠 · 2026학년도 2학기 기말프로젝트</div>
-    <h2 class="section-title" style="margin-bottom: 30px;">TEAM & CREDITS</h2>
+    <h2 class="section-title">TEAM & CREDITS</h2>
     
     <div class="credits-grid">
       <div class="credit-box">
@@ -816,7 +809,7 @@
     </div>
   </section>
 
-  <!-- 문의사항 (CONTACT) 섹션 : hyunz2j@gmail.com 연동 -->
+  <!-- ================= 6. CONTACT 섹션 ================= -->
   <section class="contact-section" id="contact">
     <div class="contact-container">
       <h2 class="section-title">CONTACT</h2>
