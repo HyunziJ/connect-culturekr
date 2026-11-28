@@ -133,14 +133,15 @@
     .hero-content {
       position: relative;
       z-index: 3;
-      max-width: 900px;
+      max-width: 950px;
     }
     .hero-tag {
       font-size: 0.9rem;
       letter-spacing: 3px;
-      color: #aaa;
+      color: #d8a867;
       margin-bottom: 15px;
       text-transform: uppercase;
+      font-weight: 700;
     }
     .hero-title {
       font-size: clamp(2.5rem, 5vw, 4.5rem);
@@ -152,7 +153,7 @@
     .hero-desc {
       font-size: 1.1rem;
       color: #bbb;
-      max-width: 600px;
+      max-width: 650px;
       word-break: keep-all;
     }
 
@@ -344,7 +345,7 @@
       font-weight: 700;
     }
 
-    /* 슬라이드 컨테이너 & 수직 중앙 정렬(justify-content: center) */
+    /* 슬라이드 컨테이너 & 수직 중앙 정렬 */
     .ppt-slide-container {
       flex: 1;
       display: flex;
@@ -363,7 +364,7 @@
       padding: 35px 50px;
       display: flex;
       flex-direction: column;
-      justify-content: center; /* 수직 정중앙 정렬로 상단 쏠림 완벽 방지 */
+      justify-content: center;
       gap: 20px;
       box-shadow: 0 30px 90px rgba(0, 0, 0, 0.8), inset 0 1px 0 rgba(255, 255, 255, 0.06);
       position: relative;
@@ -391,7 +392,7 @@
       color: #d8a867;
     }
 
-    /* 다이어그램 및 시각적 도형 스타일 */
+    /* 다이어그램 스타일 */
     .slide-grid-2col {
       display: grid;
       grid-template-columns: 1.15fr 0.85fr;
@@ -426,7 +427,7 @@
       border: 1px solid rgba(216, 168, 103, 0.3);
     }
 
-    /* 4대 무형문화재 4단 카드 */
+    /* 4단계 악기장 제작 미학 4단 카드 */
     .slide-4grid {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
@@ -508,7 +509,7 @@
       line-height: 1.55;
     }
 
-    /* 슬라이드 4막 타임라인 플로우 도형 */
+    /* 4막 플로우차트 */
     .slide-flow-container {
       display: flex;
       gap: 12px;
@@ -545,7 +546,7 @@
       line-height: 1.55;
     }
 
-    /* 플로우차트 하단 연출 보강 3단 블록 (빈 공간 완벽 채움) */
+    /* 플로우차트 하단 연출 보강 3단 블록 */
     .slide-sub-row {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
@@ -646,7 +647,7 @@
       word-break: keep-all;
     }
 
-    /* 웹사이트 캐릭터 카드 (1:1 정사각형 & 얼굴 포커스) */
+    /* 웹사이트 캐릭터 카드 */
     .character-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
@@ -1023,11 +1024,11 @@
     <div class="video-overlay"></div>
 
     <div class="hero-content">
-      <p class="hero-tag">K-Content · AI Showreel</p>
+      <p class="hero-tag">세계 최초 악기장 3D 애니메이션</p>
       <h1 class="hero-title">IT-SORI : 잇소리<br>소리로 이어지는 혼(魂)</h1>
       <p class="hero-desc">
         "비바람을 견딘 나무만이, 비로소 노래가 된다."<br>
-        가치 없는 기다림은 없다.
+        국가무형유산 악기장 고흥곤 선생의 손끝에서 탄생한 감동의 K-컬처 서사.
       </p>
     </div>
   </section>
@@ -1037,10 +1038,10 @@
     <h2 class="section-title">THE STORY</h2>
     
     <div class="logline-card">
-      <h3>"같은 산에서 자랐지만 악기가 되는 계절도, 소리도 달랐던 두 나무의 이야기"</h3>
+      <h3>"그의 손끝에서 쓸모없는 나무는 없었다."</h3>
       <p>
         장인의 지게에 실려 같은 날 산을 내려왔지만, 곧바로 화려한 북이 된 친구와 달리 마당 처마 밑에서 모진 비바람을 맞아야 했던 오동나무 ‘동이’. 
-        자신이 볼품없어 버려졌다 자책하던 동이가 스스로를 비워내며 마침내 세상에서 가장 맑은 소리를 품은 가야금으로 탄생하는 여정을 담은 3D 힐링 애니메이션입니다.
+        자신이 볼품없어 버려졌다 자책하던 동이가 비움을 거쳐 마침내 세상에서 가장 맑은 소리를 품은 가야금으로 피어나는 감동의 3D 힐링 애니메이션입니다.
       </p>
     </div>
 
@@ -1054,7 +1055,7 @@
           <div class="character-tag">Paulownia Tree</div>
           <h4 class="character-name">동이 (작은 나무)</h4>
           <p class="character-desc">
-            머리 위에 작은 잎을 틔운 여린 오동나무. 처마 밑에 남겨져 홀로 비바람을 견디며 자신을 비워낸 끝에, 영혼을 어루만지는 맑고 깊은 가야금의 선율로 피어납니다.
+            머리 위에 작은 잎을 틔운 여린 오동나무. "나는 언제쯤 소리를 낼 수 있을까.." 고민하지만, 비바람을 견디며 자신을 비워내 맑고 깊은 <strong>가야금</strong>의 선율로 피어납니다.
           </p>
         </div>
       </div>
@@ -1068,7 +1069,7 @@
           <div class="character-tag">Birch Tree</div>
           <h4 class="character-name">달박 (큰 나무)</h4>
           <p class="character-desc">
-            크고 단단한 체구의 든든한 박달나무. 장인의 손길을 거쳐 가장 먼저 세상의 심장을 깨우는 웅장한 북이 되며, 훗날 동이의 가야금 소리를 묵묵히 받쳐줍니다.
+            크고 단단한 체구의 든든한 박달나무. 장인의 손길을 거쳐 가장 먼저 세상의 심장을 깨우는 웅장한 <strong>북</strong>이 되며, 훗날 동이의 가야금 소리를 묵묵히 받쳐줍니다.
           </p>
         </div>
       </div>
@@ -1079,10 +1080,10 @@
           <img src="artisan.png" alt="악기장 고흥곤" onerror="this.src='poster.png'" />
         </div>
         <div class="character-info-box">
-          <div class="character-tag">Master Artisan</div>
+          <div class="character-tag">국가무형유산 제42호 악기장</div>
           <h4 class="character-name">악기장 (고흥곤 모티프)</h4>
           <p class="character-desc">
-            말보다 깊은 손길로 나무의 영혼을 읽어내는 장인. 동이가 비바람 속에서 스스로 울림통을 비워낼 때까지 묵묵히 기다려주고 마침내 그 안의 소리를 깨워줍니다.
+            나무마다 쓰임의 '때'가 다름을 알기에, 동이가 비워낼 때까지 묵묵히 기다려주고 마침내 그 안의 소리를 깨워주는 참된 장인 (*"어디 보자... 좋은 소리가 되겠어"*).
           </p>
         </div>
       </div>
@@ -1093,31 +1094,31 @@
       <div class="synopsis-card">
         <div class="synopsis-act">ACT 01</div>
         <h5 class="synopsis-title">엇갈린 시작</h5>
-        <p class="synopsis-text">새벽 숲을 떠나온 두 나무. 달박은 단숨에 화려한 북이 되지만, 여린 동이는 차가운 문밖 처마 밑에 남겨집니다.</p>
+        <p class="synopsis-text">소리가 닿지 않고 색을 잃은 세상. 같은 산을 내려왔지만 달박은 북이 되고 동이는 차가운 문밖 처마 밑에 남겨집니다.</p>
       </div>
 
       <div class="synopsis-card">
         <div class="synopsis-act">ACT 02</div>
         <h5 class="synopsis-title">비바람의 계절</h5>
-        <p class="synopsis-text">모진 비바람과 눈보라를 견디는 시간. 나무는 수분과 떫은 진액을 비워내며 가장 가볍고 단단한 울림통으로 거듭납니다.</p>
+        <p class="synopsis-text">모진 비바람과 눈보라를 견디는 시간. 나무는 수분과 떫은 진액을 스스로 비워내며 가장 가볍고 단단한 울림통으로 성숙합니다.</p>
       </div>
 
       <div class="synopsis-card">
         <div class="synopsis-act">ACT 03</div>
         <h5 class="synopsis-title">장인의 발견</h5>
-        <p class="synopsis-text">비움을 마친 가을, 때를 알고 찾아온 장인의 손끝에서 영롱한 공명이 울리고 명주실을 얹은 가야금이 탄생합니다.</p>
+        <p class="synopsis-text">비움을 마친 가을, 때를 알고 찾아온 장인의 손길과 인두질을 거쳐 명주실 12현을 얹으며 은은한 황금빛 색채가 피어납니다.</p>
       </div>
 
       <div class="synopsis-card">
         <div class="synopsis-act">ACT 04</div>
-        <h5 class="synopsis-title">하나의 울림</h5>
-        <p class="synopsis-text">대청마루에서 마주한 북과 가야금의 합주. 두 소리가 어우러지는 순간 흑백이던 세상이 찬란한 풀컬러로 피어납니다.</p>
+        <h5 class="synopsis-title">새로운 세상</h5>
+        <p class="synopsis-text">전통 가야금 선율과 K-POP 아이돌 퍼포먼스의 환상적인 크로스오버 합주! 흑백이던 세상이 완전한 풀컬러로 찬란하게 개화합니다.</p>
       </div>
 
       <div class="synopsis-card">
         <div class="synopsis-act">EPILOGUE</div>
-        <h5 class="synopsis-title">100년 뒤의 합주</h5>
-        <p class="synopsis-text">100년의 세월을 건너 다음 세대의 연주자들에 의해 다시 울려 퍼지는 두 악기. 전통의 생명은 영원히 이어집니다.</p>
+        <h5 class="synopsis-title">영원한 전승</h5>
+        <p class="synopsis-text">100년의 세월을 건너 다음 세대의 연주자들에 의해 변함없이 이어지는 전통 악기의 영원한 숨결.</p>
       </div>
     </div>
   </section>
@@ -1216,7 +1217,7 @@
 
   <!-- ================= 인터랙션 & 대형 PPT 인포그래픽 스크립트 ================= -->
   <script>
-    /* 여백 없이 꽉 채운 16:9 슬라이드 데이터 */
+    /* 악기장 중심 스토리로 전면 개편된 와이드 슬라이드 데이터 */
     const slides = [
       /* SLIDE 1 : 표지 */
       {
@@ -1226,13 +1227,13 @@
           <div class="slide-grid-2col">
             <div>
               <div style="display:inline-block; background:rgba(216,168,103,0.15); border:1px solid #d8a867; color:#f8dfa6; padding:6px 16px; border-radius:20px; font-size:0.85rem; font-weight:700; margin-bottom:20px;">
-                2026학년도 2학기 엔터컬쳐와 K-콘텐츠 기말프로젝트
+                세계 최초 악기장 3D 애니메이션 프로젝트
               </div>
               <h3 style="font-family:'Noto Serif KR'; font-size:1.6rem; color:#f8dfa6; margin-bottom:18px; line-height:1.4;">
-                "우리가 알던 세계 너머로 —<br>비바람을 견딘 나무만이, 비로소 노래가 된다."
+                "언제부터인가, 소리는 이어지지 않았다.<br>세상은 조용히 색을 잃어갔다."
               </h3>
               <p style="color:#aaa; font-size:1.02rem; line-height:1.75; margin-bottom:24px;">
-                판소리, 진주검무, 무용, 종묘제례악 4대 무형문화재와 악기장 고흥곤 선생의 철학을 인공지능(AI) 영상 기술로 엮어낸 3D 단편 애니메이션 기획.
+                국가무형유산 제42호 악기장 고흥곤 선생의 현악기 제작 철학과 두 나무의 우화를 AI 영상 기술로 결합하여, 전통 국악과 현대 K-POP의 대융합을 이뤄낸 단편 애니메이션 기획.
               </p>
               <div style="background:rgba(25,30,42,0.6); border-left:3px solid #d8a867; padding:15px 20px; border-radius:0 6px 6px 0;">
                 <p style="font-size:0.95rem; color:#ddd;"><strong>팀 구성:</strong> 장현지(총괄 기획) · 정서윤 · 주유정 · 김동규</p>
@@ -1255,26 +1256,26 @@
           <div style="display:grid; grid-template-columns:1fr 1fr; gap:26px; margin-bottom:16px;">
             <div class="slide-card-box" style="border-top:3px solid #eb5757;">
               <span class="slide-pill pill-red">CURRENT PROBLEM</span>
-              <h4 style="font-size:1.25rem; color:#fff; margin-bottom:14px;">전통 예술의 거리감과 피상적 소비</h4>
+              <h4 style="font-size:1.25rem; color:#fff; margin-bottom:14px;">전통 악기 제작의 단절과 거리감</h4>
               <ul style="color:#9aa0ac; font-size:0.92rem; line-height:1.75; list-style:none; padding:0;">
-                <li style="margin-bottom:10px;">⚠️ <strong>외형적 몸짓 주목:</strong> 의미를 전달하려 창작되나 대중은 겉모습에만 치중.</li>
-                <li style="margin-bottom:10px;">⚠️ <strong>장르적 장벽:</strong> 젊은 1030 세대에게 '어렵고 지루한 것'으로 인식.</li>
-                <li>⚠️ <strong>세대 간 단절:</strong> 무형유산의 가치와 장인의 시간이 전승되지 못함.</li>
+                <li style="margin-bottom:10px;">⚠️ <strong>장인정신의 망각:</strong> 하나의 악기가 완성되기까지의 인고와 비움을 대중은 알지 못함.</li>
+                <li style="margin-bottom:10px;">⚠️ <strong>전통 악기의 침체:</strong> 가야금·거문고 등 전통 현악기가 현대 젊은 세대의 일상과 멀어짐.</li>
+                <li>⚠️ <strong>소리의 단절:</strong> 세대 간 소통이 멈추며 문화적 온기가 식어가는 현실.</li>
               </ul>
             </div>
             <div class="slide-card-box" style="border-top:3px solid #d8a867;">
-              <span class="slide-pill pill-gold">AI K-CONTENT SOLUTION</span>
-              <h4 style="font-size:1.25rem; color:#f8dfa6; margin-bottom:14px;">무형의 가치를 시각 서사로 승화</h4>
+              <span class="slide-pill pill-gold">ANIMATION & K-POP FUSION</span>
+              <h4 style="font-size:1.25rem; color:#f8dfa6; margin-bottom:14px;">악기장 애니메이션을 통한 K-서사 혁신</h4>
               <ul style="color:#c5c9d1; font-size:0.92rem; line-height:1.75; list-style:none; padding:0;">
-                <li style="margin-bottom:10px;">✨ <strong>생성형 AI 기술:</strong> 소리와 춤을 우주적 빛의 파동으로 가시화.</li>
-                <li style="margin-bottom:10px;">✨ <strong>장인의 철학:</strong> <em>"실과 나무로 엮은 천만세(千萬世)의 소리"</em> 스토리텔링.</li>
-                <li>✨ <strong>우화적 접근:</strong> 두 나무 캐릭터(동이·달박)로 친근한 공감대 형성.</li>
+                <li style="margin-bottom:10px;">✨ <strong>세계 최초 악기장 애니메이션:</strong> 실사 대패질과 3D 애니메이션의 감각적 교차.</li>
+                <li style="margin-bottom:10px;">✨ <strong>자연물의 의인화:</strong> 박달나무(북)와 오동나무(가야금)를 통해 '기다림의 가치' 전달.</li>
+                <li>✨ <strong>K-POP 크로스오버:</strong> 전통 가야금 선율과 현대 아이돌 댄스 퍼포먼스의 폭발적 융합.</li>
               </ul>
             </div>
           </div>
           <div class="sub-box" style="text-align:center;">
             <p style="color:#d8a867; font-size:0.92rem; font-weight:600;">
-              💡 핵심 가치 제언: 전통 예술의 '본질적 울림'을 AI 시각 서사로 복원하여 비전문 관객의 정서적 몰입을 극대화한다.
+              💡 핵심 가치 제언: 장인의 손길(실사)과 AI 3D 캐릭터(우화)의 결합을 통해, 잊혀진 전통 악기 제작 과정을 현대적이고 역동적인 K-콘텐츠로 재탄생시킨다.
             </p>
           </div>
         `
@@ -1287,25 +1288,24 @@
         html: `
           <div style="display:grid; grid-template-columns:repeat(3, 1fr); gap:22px; margin-bottom:16px;">
             <div class="slide-card-box" style="text-align:center; padding:28px 20px;">
-              <div style="font-size:2.5rem; margin-bottom:12px;">🎯</div>
-              <h4 style="font-size:1.2rem; color:#f8dfa6; margin-bottom:10px;">연구 질문 01</h4>
+              <div style="font-size:2.5rem; margin-bottom:12px;">🪵</div>
+              <h4 style="font-size:1.2rem; color:#f8dfa6; margin-bottom:10px;">장인의 철학 서사화</h4>
               <p style="color:#aaa; font-size:0.88rem; line-height:1.65;">
-                AI 기반 연출(흑백 모노톤에서 풀컬러로의 전환)은 관객에게 전통 예술의 내면적 의미를 효과적으로 전달하는가?
+                악기장 고흥곤 선생의 실제 악기 제작 기법(겉목치기, 삭힘, 인두질, 줄매기)을 감동적인 성장 드라마로 승화.
               </p>
             </div>
             <div class="slide-card-box" style="text-align:center; padding:28px 20px; border-color:rgba(216,168,103,0.4);">
-              <div style="font-size:2.5rem; margin-bottom:12px;">🌐</div>
-              <h4 style="font-size:1.2rem; color:#f8dfa6; margin-bottom:10px;">연구 질문 02</h4>
+              <div style="font-size:2.5rem; margin-bottom:12px;">🎨</div>
+              <h4 style="font-size:1.2rem; color:#f8dfa6; margin-bottom:10px;">시각적 색채 인터랙션</h4>
               <p style="color:#aaa; font-size:0.88rem; line-height:1.65;">
-                4대 무형문화재를 하나의 시각 서사로 융합할 때, 비전문 대중 관객의 감정적 몰입을 극대화할 수 있는가?
+                소리가 멈춰 흑백이던 세상이 장인의 손길과 가야금의 선율을 타고 무지개빛과 완전한 풀컬러로 개화.
               </p>
             </div>
             <div class="slide-card-box" style="text-align:center; padding:28px 20px;">
-              <div style="font-size:2.5rem; margin-bottom:12px;">🚀</div>
-              <h4 style="font-size:1.2rem; color:#f8dfa6; margin-bottom:10px;">프로젝트 지향점</h4>
+              <div style="font-size:2.5rem; margin-bottom:12px;">🎤</div>
+              <h4 style="font-size:1.2rem; color:#f8dfa6; margin-bottom:10px;">K-POP 크로스오버</h4>
               <p style="color:#aaa; font-size:0.88rem; line-height:1.65;">
-                <strong>"전통의 별빛, AI로 이어지는 미래"</strong><br>
-                단순한 문화재 홍보를 넘어 글로벌 경쟁력을 지닌 하이엔드 K-콘텐츠 모델 제시.
+                전통 악기를 박물관 유물이 아닌, 글로벌 K-아이돌 무대 위 중심 악기로 재배치하여 젊은 관객의 전율 유도.
               </p>
             </div>
           </div>
@@ -1317,40 +1317,40 @@
         `
       },
 
-      /* SLIDE 4 : 4대 무형문화재와 빛의 궤적 */
+      /* SLIDE 4 : [전면 개편] 악기장 고흥곤의 4단계 현악기 제작 미학 */
       {
-        tag: "SLIDE 04 · WORLDVIEW & 4 HERITAGES",
-        title: "4대 무형문화재와 <span>빛의 궤적</span>",
+        tag: "SLIDE 04 · CRAFTSMANSHIP & PHILOSOPHY",
+        title: "악기장 고흥곤의 <span>전통 현악기 제작 미학</span>",
         html: `
           <div class="slide-4grid" style="margin-bottom:16px;">
             <div class="slide-heritage-card">
               <div class="num">01</div>
-              <div class="symbol">소리 · 땅의 돋움</div>
-              <h4>판소리</h4>
-              <p>지리산 폭포에서 울리는 명창의 득음 소리가 음파 파동이 되어 아포칼립스의 차원 균열을 일시 동결.</p>
+              <div class="symbol">나무 고르기 · 선별</div>
+              <h4>인연의 시작</h4>
+              <p>25년 이상 자란 오동나무와 단단한 박달나무. 장인은 겉모습이 아닌 나무 고유의 울림을 꿰뚫어 봄 (<em>"어디 보자... 좋은 소리가 되겠어"</em>).</p>
             </div>
             <div class="slide-heritage-card">
               <div class="num">02</div>
-              <div class="symbol">검 · 인간의 결의</div>
-              <h4>진주검무</h4>
-              <p>빗속 진주성, 칼끝에서 튀는 불꽃과 부드러운 춤사위로 절망의 정령들을 돌파하는 비장한 검무 액션.</p>
+              <div class="symbol">겉목치기 · 비움</div>
+              <h4>자연 건조와 인고</h4>
+              <p>껍질을 쳐낸 뒤 수년간 비바람과 눈보라를 맞히는 삭힘의 시간. 떫은 진액과 수분을 비워내야만 비로소 청아한 '소리의 방(울림통)'이 완성됨.</p>
             </div>
             <div class="slide-heritage-card">
               <div class="num">03</div>
-              <div class="symbol">몸짓 · 영혼의 정화</div>
-              <h4>승무 · 살풀이</h4>
-              <p>흩날리는 흰 장삼과 수건이 우주적 빛의 입자로 승화되며, 칼로 베어낸 자리의 상처와 한을 치유.</p>
+              <div class="symbol">대패질과 인두질 · 조율</div>
+              <h4>상처의 치유와 결</h4>
+              <p>뜨거운 인두로 나무 표면의 잔류 진을 다스리고 속을 파내어 곡선을 다듬음. 장인의 손길 아래 깎이고 지져지며 고유한 악기로 재탄생.</p>
             </div>
             <div class="slide-heritage-card" style="border-color:rgba(216,168,103,0.4);">
               <div class="num" style="color:rgba(216,168,103,0.3);">04</div>
-              <div class="symbol">주파수 · 하늘의 조화</div>
-              <h4>종묘제례악</h4>
-              <p>편경과 편종의 묵직한 잔향이 우주적 빛의 기둥이 되어 세계의 질서를 회복하고 풀컬러로 합일.</p>
+              <div class="symbol">생사 줄걸기 · 합일</div>
+              <h4>새로운 세상의 개막</h4>
+              <p>누에고치 명주실을 꼬아 12현을 팽팽히 얹고 안족을 세움. 첫 뜯김과 함께 흑백 세상에 색채가 돌고 현대 K-POP 퍼포먼스와의 대합주로 확장.</p>
             </div>
           </div>
           <div class="sub-box">
             <p style="color:#d8a867; font-size:0.86rem; text-align:center;">
-              ⚡ <strong>빛의 궤적 매커니즘:</strong> 소리꾼의 목소리(파동) ➔ 검무의 칼끝(불꽃) ➔ 승무의 장삼(빛 입자) ➔ 편경·편종의 잔향(빛의 기둥)
+              ⚡ <strong>실과 나무로 엮은 천만세(千萬世)의 소리:</strong> 사죽(絲竹)의 전통 공예 철학을 3D 애니메이션 서사로 완벽 구현
             </p>
           </div>
         `
@@ -1369,7 +1369,7 @@
               <div class="slide-char-info">
                 <span class="slide-pill pill-gold">오동나무</span>
                 <h4>동이 (작은 나무)</h4>
-                <p>처마 밑에 버려졌다 오해하지만 비바람 속에서 스스로 진액을 비워내 맑고 깊은 <strong>가야금</strong>으로 탄생.</p>
+                <p><em>"나는 언제쯤 소리를 낼 수 있을까.."</em> 마당에 남겨져 홀로 비바람을 견디며 자신을 비워내 맑고 깊은 <strong>가야금</strong>으로 탄생.</p>
               </div>
             </div>
 
@@ -1380,7 +1380,7 @@
               <div class="slide-char-info">
                 <span class="slide-pill pill-gold">박달나무</span>
                 <h4>달박 (큰 나무)</h4>
-                <p>단단한 체구로 장인의 손을 거쳐 가장 먼저 세상을 깨우는 웅장한 <strong>북</strong>이 되어 친구를 묵묵히 받쳐줌.</p>
+                <p>단단한 체구로 장인의 손을 거쳐 가장 먼저 세상을 깨우는 웅장한 <strong>북</strong>이 되어 친구 동이의 선율을 묵묵히 받쳐줌.</p>
               </div>
             </div>
 
@@ -1389,66 +1389,64 @@
                 <img src="artisan.png" alt="악기장" onerror="this.src='poster.png'" />
               </div>
               <div class="slide-char-info">
-                <span class="slide-pill pill-gold">국가무형유산</span>
+                <span class="slide-pill pill-gold">국가무형유산 제42호</span>
                 <h4>악기장 (고흥곤 모티프)</h4>
-                <p>나무마다 쓰임의 '때'가 다름을 알기에, 동이가 비워낼 때까지 기다려주고 영혼의 첫 음을 틔워주는 스승.</p>
+                <p><em>"어디 보자... 좋은 소리가 되겠어."</em> 나무마다 쓰임의 때를 알고 비워낼 때까지 기다려주며 영혼의 첫 음을 틔워주는 스승.</p>
               </div>
             </div>
           </div>
         `
       },
 
-      /* SLIDE 6 : 4막 시놉시스 플로우차트 (상하단 완벽 채움!) */
+      /* SLIDE 6 : 4막 시놉시스 플로우차트 */
       {
         tag: "SLIDE 06 · SYNOPSIS TIMELINE",
         title: "스토리 흐름 : <span>4막 구성 플로우차트 & 핵심 연출</span>",
         html: `
-          <!-- 상단: 5단계 가로 플로우차트 -->
           <div class="slide-flow-container">
             <div class="slide-flow-step">
               <span class="step-badge">ACT 01</span>
               <h4>엇갈린 시작</h4>
-              <p>같은 산을 내려왔지만, 북이 된 달박과 마당에 홀로 세워진 동이.</p>
+              <p>소리와 색을 잃은 세상. 산을 내려왔지만 북이 된 달박과 마당에 홀로 세워진 동이.</p>
             </div>
             <div style="display:flex; align-items:center; color:#d8a867; font-size:1.3rem;">➔</div>
             <div class="slide-flow-step">
               <span class="step-badge">ACT 02</span>
               <h4>비바람의 계절</h4>
-              <p>장대비와 눈보라를 맞으며 수분과 진액을 비워내 단단한 울림통으로 성숙.</p>
+              <p>장대비와 눈보라를 맞으며 수분과 떫은 진을 비워내 단단한 울림통으로 성숙.</p>
             </div>
             <div style="display:flex; align-items:center; color:#d8a867; font-size:1.3rem;">➔</div>
             <div class="slide-flow-step">
               <span class="step-badge">ACT 03</span>
               <h4>장인의 발견</h4>
-              <p>때를 알고 찾아온 장인의 손끝 공명. 명주실을 얹자 황금빛 색채가 번짐.</p>
+              <p>때를 알고 찾아온 장인의 손길과 인두질. 명주실 현을 얹자 황금빛 색채가 번짐.</p>
             </div>
             <div style="display:flex; align-items:center; color:#d8a867; font-size:1.3rem;">➔</div>
             <div class="slide-flow-step">
               <span class="step-badge">ACT 04</span>
-              <h4>하나의 울림</h4>
-              <p>대청마루 위 대북과 가야금의 합주. 흑백이던 세상이 풀컬러로 대개화.</p>
+              <h4>새로운 세상</h4>
+              <p>전통 가야금과 K-POP 아이돌 댄스의 폭발적 합주! 세상이 완전한 풀컬러로 대개화.</p>
             </div>
             <div style="display:flex; align-items:center; color:#d8a867; font-size:1.3rem;">➔</div>
             <div class="slide-flow-step" style="border-color:rgba(216,168,103,0.5);">
               <span class="step-badge" style="background:#d8a867; color:#000;">100 YEARS</span>
               <h4>영원한 전승</h4>
-              <p>100년 뒤 다음 세대 연주자들에 의해 변함없이 울려 퍼지는 전통의 혼(魂).</p>
+              <p>100년 뒤 다음 세대 연주자들에 의해 변함없이 울려 퍼지는 전통의 영원한 혼(魂).</p>
             </div>
           </div>
 
-          <!-- 하단 빈 공간 완벽 보충: 연출 & 감정 매커니즘 3단 카드 -->
           <div class="slide-sub-row">
             <div class="sub-box">
               <h5>🎨 시각·색채 연출 (Color Progression)</h5>
-              <p>완전한 흑백 모노톤으로 시작하여, 가야금의 첫 음과 함께 은은한 황금빛이 번지고 최종 대합주에서 완전한 RGB 풀컬러로 만개하는 감정적 시각 쾌감 제공.</p>
+              <p>완전한 흑백 모노톤으로 시작하여, 가야금의 첫 음과 함께 은은한 황금빛이 번지고 최종 K-POP 대합주에서 완전한 RGB 풀컬러로 만개하는 감정적 시각 쾌감 제공.</p>
             </div>
             <div class="sub-box">
               <h5>🎵 사운드 디자인 (Audio Architecture)</h5>
-              <p>세찬 비바람의 적막과 쓸쓸한 선율 ➔ 텅 빈 오동나무 울림통을 가볍게 두드리는 청아한 공명음(통—) ➔ 대북의 묵직한 심장 박동과 어우러지는 국악 퓨전 오케스트라.</p>
+              <p>비바람의 적막과 쓸쓸한 선율 ➔ 텅 빈 오동나무의 청아한 공명음(통—) ➔ 대북의 묵직한 심장 박동과 어우러지는 현대적 K-POP 국악 퓨전 비트.</p>
             </div>
             <div class="sub-box">
               <h5>🪵 장인의 철학 & 내러티브 핵심</h5>
-              <p>"비바람을 맞게 둔 것은 버림이 아닌 단단하게 비워내기 위한 장인의 기다림이었다." 겉보기에 볼품없어 보이던 고난이 자신만의 고유한 소리를 만드는 치유의 서사 완성.</p>
+              <p><em>"그의 손끝에서 쓸모없는 나무는 없었다."</em> 겉보기에 볼품없어 보이던 고난과 기다림이 자신만의 고유한 소리를 만드는 치유의 서사 완성.</p>
             </div>
           </div>
         `
@@ -1457,31 +1455,31 @@
       /* SLIDE 7 : AI 제작 프로세스 및 사운드 연출 */
       {
         tag: "SLIDE 07 · AI & TECH PRODUCTION",
-        title: "AI 기술 접목 및 <span>사운드 디렉팅</span>",
+        title: "AI 기술 접목 및 <span>하이브리드 연출</span>",
         html: `
           <div class="slide-grid-2col" style="margin-bottom:16px;">
             <div class="slide-card-box">
-              <span class="slide-pill pill-gold">VISUAL INNOVATION</span>
-              <h4 style="font-size:1.2rem; color:#fff; margin-bottom:12px;">3D 애니메이션과 실사의 정교한 결합</h4>
+              <span class="slide-pill pill-gold">HYBRID CINEMA</span>
+              <h4 style="font-size:1.2rem; color:#fff; margin-bottom:12px;">실사 장인정신과 3D 애니메이션의 교차</h4>
               <ul style="color:#aaa; font-size:0.88rem; line-height:1.7; list-style:none; padding:0;">
+                <li style="margin-bottom:8px;">🎥 <strong>실사 교차 편집:</strong> 실제 악기장 고흥곤 선생의 정교한 대패질과 줄걸기 실사 삽입.</li>
                 <li style="margin-bottom:8px;">🎨 <strong>픽사/엘리멘탈 스타일 캐릭터:</strong> 자연물의 감정선 의인화.</li>
-                <li style="margin-bottom:8px;">🎞️ <strong>시네마틱 색채 인터랙션:</strong> 흑백 모노톤 ➔ 가야금 황금빛 ➔ 풀컬러 전환.</li>
-                <li>🪵 <strong>전통 고증:</strong> 겉목치기, 인두질, 안족 세우기 등 악기 제작 과정 완벽 반영.</li>
+                <li>🎞️ <strong>시네마틱 색채 인터랙션:</strong> 흑백 모노톤 ➔ 가야금 황금빛 ➔ 풀컬러 전환.</li>
               </ul>
             </div>
             <div class="slide-card-box">
-              <span class="slide-pill pill-gold">SOUND DIRECTING</span>
-              <h4 style="font-size:1.2rem; color:#fff; margin-bottom:12px;">AI 사운드 생성 (Suno / ElevenLabs)</h4>
+              <span class="slide-pill pill-gold">SOUND & CROSSOVER</span>
+              <h4 style="font-size:1.2rem; color:#fff; margin-bottom:12px;">AI 사운드 생성 및 K-POP 크로스오버</h4>
               <ul style="color:#aaa; font-size:0.88rem; line-height:1.7; list-style:none; padding:0;">
-                <li style="margin-bottom:8px;">🎙️ <strong>내레이션 톤:</strong> 차분하고 지혜로운 할아버지 톤의 울림.</li>
-                <li style="margin-bottom:8px;">🎵 <strong>국악 오케스트라 퓨전:</strong> 대북의 심장 박동과 가야금의 선율 합주.</li>
-                <li>🔊 <strong>공명 SFX:</strong> 오동나무 울림통의 청아한 울림(통—)과 현 마찰음 구현.</li>
+                <li style="margin-bottom:8px;">🎙️ <strong>감성 보이스 디렉팅:</strong> 차분하고 지혜로운 할아버지 톤의 내레이션.</li>
+                <li style="margin-bottom:8px;">🎵 <strong>K-POP 아이돌 댄스 융합:</strong> 12현 가야금 선율 위에 얹히는 파워풀한 댄스 비트.</li>
+                <li>🔊 <strong>공명 SFX:</strong> 오동나무 울림통의 청아한 울림(통—)과 명주실 현 마찰음 구현.</li>
               </ul>
             </div>
           </div>
           <div class="sub-box">
             <p style="color:#c5c9d1; font-size:0.86rem; text-align:center;">
-              🛠️ <strong>AI 크리에이티브 파이프라인:</strong> Midjourney (비주얼/캐릭터) ➔ Runway/Kling (시네마틱 모션) ➔ ElevenLabs & Suno (내레이션 및 BGM) ➔ Premiere Pro (최종 마스터링)
+              🛠️ <strong>AI 크리에이티브 파이프라인:</strong> Midjourney (비주얼/캐릭터) ➔ Runway/Kling (시네마틱 모션) ➔ ElevenLabs & Suno (내레이션 및 BGM) ➔ Premiere Pro (최종 하이브리드 마스터링)
             </p>
           </div>
         `
@@ -1494,15 +1492,17 @@
         html: `
           <div style="display:flex; flex-direction:column; justify-content:center; align-items:center; text-align:center; padding:15px 30px;">
             <div style="background:rgba(216,168,103,0.08); border:1px solid rgba(216,168,103,0.3); border-radius:12px; padding:32px 48px; max-width:960px; margin-bottom:24px; backdrop-filter:blur(10px);">
-              <p style="font-family:'Noto Serif KR'; font-size:1.45rem; color:#f8dfa6; line-height:1.8; font-weight:600;">
-                "일찍 단단해진 나무는 세상을 깨우는 심장이 되었고,<br>
-                늦게 비워진 나는 세상의 상처를 어루만지는 숨결이 되었다.<br>
-                가치 없는 기다림은 없다. 비바람을 견딘 자만이 품을 수 있는 소리가 있으니."
+              <p style="font-family:'Noto Serif KR'; font-size:1.5rem; color:#f8dfa6; line-height:1.8; font-weight:700; margin-bottom:10px;">
+                "그의 손끝에서 쓸모없는 나무는 없었다."
+              </p>
+              <p style="font-family:'Noto Serif KR'; font-size:1.2rem; color:#ddd; line-height:1.6; font-weight:400;">
+                일찍 단단해진 나무는 세상을 깨우는 심장(북)이 되었고,<br>
+                늦게 비워진 나는 세상의 상처를 어루만지는 숨결(가야금)이 되었다.
               </p>
             </div>
             <p style="color:#aaa; font-size:1.02rem; max-width:800px; line-height:1.7; margin-bottom:18px;">
-              누군가는 일찍 꽃피고, 누군가는 비바람 속에 머무는 것처럼 보일지 모릅니다.<br>
-              하지만 우리 모두는 각자의 계절과 모양대로 기꺼이 빛나는 유일한 존재입니다.
+              누군가는 일찍 단단해지고, 누군가는 비바람 속에 머무는 것처럼 보일지 모릅니다.<br>
+              가치 없는 기다림은 없습니다. 비바람을 견딘 자만이 품을 수 있는 소리가 있으니.
             </p>
             <div style="font-size:0.9rem; color:#d8a867; letter-spacing:2px; font-weight:700;">
               TEAM 잇소리 · 경청해 주셔서 감사합니다.
@@ -1601,7 +1601,7 @@
       if (e.target === posterModal) closePoster();
     }
 
-    /* 키보드 단축키 (화살표로 슬라이드 넘기기, ESC로 닫기) */
+    /* 키보드 단축키 */
     document.addEventListener('keydown', (e) => {
       if (pptModal.classList.contains('active')) {
         if (e.key === 'ArrowRight' || e.key === ' ') nextSlide();
