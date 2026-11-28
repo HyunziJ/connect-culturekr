@@ -11,7 +11,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;800&family=Pretendard:wght@300;400;600;700&display=swap" rel="stylesheet">
 
   <style>
-    /* 기본 리셋 & 공통 스타일 (오리지널 Plus X 스타일 유지) */
+    /* 기본 리셋 & 공통 스타일 */
     * {
       margin: 0;
       padding: 0;
@@ -51,47 +51,37 @@
     nav ul {
       display: flex;
       list-style: none;
-      gap: 30px;
+      gap: 32px;
       align-items: center;
     }
     nav a {
       font-size: 0.9rem;
       font-weight: 600;
-      letter-spacing: 1px;
+      letter-spacing: 1.5px;
       text-transform: uppercase;
       transition: opacity 0.3s;
+      cursor: pointer;
     }
     nav a:hover {
-      opacity: 0.6;
+      opacity: 0.5;
     }
 
-    /* 내 영상 바로 확인하기 버튼 (우측 상단 플로팅 컨트롤) */
-    .media-loader-bar {
-      position: fixed;
-      top: 30px;
-      right: 280px;
-      z-index: 1000;
-      display: flex;
-      gap: 10px;
+    /* Movie 네비게이션 포인트 강조 */
+    .nav-movie {
+      color: #ffffff;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
     }
-    .quick-btn {
-      background: rgba(255, 255, 255, 0.15);
-      border: 1px solid rgba(255, 255, 255, 0.4);
-      color: #fff;
-      font-size: 0.8rem;
-      font-weight: 600;
-      padding: 7px 16px;
-      border-radius: 30px;
-      cursor: pointer;
-      backdrop-filter: blur(10px);
-      transition: all 0.3s ease;
+    .nav-movie::before {
+      content: "●";
+      font-size: 0.65rem;
+      color: #d8a867;
+      animation: pulse 1.5s infinite;
     }
-    .quick-btn:hover {
-      background: #ffffff;
-      color: #000000;
-    }
-    input[type="file"] {
-      display: none;
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.3; }
     }
 
     /* 히어로 섹션 (풀스크린 영상 영역) */
@@ -106,7 +96,6 @@
       padding: 60px 50px;
     }
 
-    /* 배경 비디오 */
     .video-background {
       position: absolute;
       top: 50%;
@@ -120,7 +109,6 @@
       z-index: 1;
     }
 
-    /* 영상 오버레이 */
     .video-overlay {
       position: absolute;
       top: 0;
@@ -131,7 +119,6 @@
       z-index: 2;
     }
 
-    /* 히어로 텍스트 */
     .hero-content {
       position: relative;
       z-index: 3;
@@ -158,32 +145,127 @@
       word-break: keep-all;
     }
 
-    /* 공통 섹션 스타일 */
-    .content-section {
+    /* ===================================================
+       MOVIE 전체화면 시네마 모달 (Theater Mode)
+       =================================================== */
+    .movie-modal {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: rgba(5, 5, 5, 0.96);
+      backdrop-filter: blur(20px);
+      z-index: 9999;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .movie-modal.active {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    /* 모달 상단 컨트롤 바 */
+    .modal-header {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      padding: 30px 50px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      z-index: 10001;
+    }
+    .modal-title {
+      font-size: 0.9rem;
+      font-weight: 700;
+      letter-spacing: 2px;
+      color: #aaa;
+      text-transform: uppercase;
+    }
+    .modal-controls {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+
+    /* 사운드 ON/OFF 버튼 */
+    .modal-sound-btn {
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.25);
+      color: #fff;
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 1.5px;
+      padding: 8px 18px;
+      border-radius: 30px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+    .modal-sound-btn:hover {
+      background: #fff;
+      color: #000;
+    }
+
+    /* 우측 상단 X 닫기 버튼 */
+    .modal-close-btn {
+      background: transparent;
+      border: none;
+      color: #ffffff;
+      font-size: 2rem;
+      line-height: 1;
+      cursor: pointer;
+      opacity: 0.7;
+      transition: opacity 0.3s, transform 0.3s;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .modal-close-btn:hover {
+      opacity: 1;
+      transform: scale(1.15) rotate(90deg);
+    }
+
+    /* 비디오 플레이어 뷰 */
+    .modal-video-box {
+      width: 90vw;
+      max-width: 1400px;
+      height: 80vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+    }
+    .modal-video-box video {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      border-radius: 8px;
+      box-shadow: 0 25px 60px rgba(0, 0, 0, 0.9);
+      outline: none;
+    }
+
+    /* 포트폴리오 작업물 섹션 (Works) */
+    .works-section {
       position: relative;
       z-index: 10;
       background: #0b0b0b;
-      padding: 100px 50px;
+      padding: 120px 50px;
     }
     .section-title {
       font-size: 2rem;
       font-weight: 700;
       letter-spacing: 1px;
-      margin-bottom: 50px;
+      margin-bottom: 60px;
       border-bottom: 1px solid #222;
       padding-bottom: 20px;
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-end;
     }
-    .section-title span {
-      font-size: 0.85rem;
-      font-weight: 400;
-      color: #777;
-      letter-spacing: 1px;
-    }
-
-    /* 포트폴리오 작업물 그리드 */
     .work-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
@@ -225,63 +307,65 @@
       color: #777;
     }
 
-    /* ---------------- 추가: 수업 정보 및 팀원 역할 스타일 ---------------- */
+    /* 팀원 & 수업 섹션 (Credits) */
+    .credits-section {
+      position: relative;
+      z-index: 10;
+      background: #0b0b0b;
+      padding: 0 50px 120px 50px;
+    }
     .course-badge {
-      display: inline-block;
-      padding: 6px 14px;
-      border: 1px solid #333;
-      border-radius: 20px;
+      font-size: 0.9rem;
+      color: #888;
+      letter-spacing: 2px;
+      margin-bottom: 30px;
+      text-transform: uppercase;
+    }
+    .credits-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 30px;
+      border-top: 1px solid #1c1c1c;
+      padding-top: 40px;
+    }
+    .credit-box h4 {
+      font-size: 1.1rem;
+      font-weight: 700;
+      margin-bottom: 8px;
+      color: #fff;
+    }
+    .credit-box .role {
       font-size: 0.85rem;
       color: #aaa;
-      margin-bottom: 30px;
-      letter-spacing: 1px;
-    }
-    .team-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 30px;
-    }
-    .team-card {
-      border-left: 1px solid #2a2a2a;
-      padding-left: 20px;
-      transition: border-color 0.3s ease;
-    }
-    .team-card:hover {
-      border-left-color: #ffffff;
-    }
-    .team-role {
-      font-size: 0.78rem;
-      font-weight: 700;
-      color: #777;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      margin-bottom: 8px;
-    }
-    .team-name {
-      font-size: 1.2rem;
-      font-weight: 700;
-      color: #ffffff;
       margin-bottom: 6px;
+      font-weight: 600;
     }
-    .team-desc {
-      font-size: 0.88rem;
-      color: #999;
-      word-break: keep-all;
+    .credit-box .desc {
+      font-size: 0.8rem;
+      color: #666;
+      line-height: 1.5;
     }
 
-    /* ---------------- 추가: 미니멀 문의사항 (Contact) 폼 ---------------- */
+    /* 문의하기 (CONTACT) 섹션 */
+    .contact-section {
+      position: relative;
+      z-index: 10;
+      background: #0e0e0e;
+      padding: 120px 50px;
+      border-top: 1px solid #1a1a1a;
+    }
     .contact-container {
-      max-width: 650px;
+      max-width: 800px;
     }
     .contact-desc {
-      font-size: 1rem;
-      color: #888;
+      color: #777;
+      font-size: 0.95rem;
       margin-bottom: 40px;
     }
     .contact-form {
       display: flex;
       flex-direction: column;
-      gap: 28px;
+      gap: 20px;
     }
     .form-group {
       display: flex;
@@ -289,51 +373,45 @@
       gap: 8px;
     }
     .form-group label {
-      font-size: 0.75rem;
+      font-size: 0.8rem;
       font-weight: 600;
-      color: #777;
       letter-spacing: 1.5px;
       text-transform: uppercase;
+      color: #888;
     }
     .form-group input, 
     .form-group textarea {
       width: 100%;
-      background: transparent;
-      border: none;
-      border-bottom: 1px solid #2a2a2a;
+      background: #141414;
+      border: 1px solid #262626;
+      border-radius: 4px;
+      padding: 16px;
       color: #fff;
       font-family: inherit;
-      font-size: 1rem;
-      padding: 10px 0;
+      font-size: 0.95rem;
       outline: none;
-      transition: border-bottom-color 0.3s;
+      transition: border-color 0.3s;
     }
     .form-group input:focus, 
     .form-group textarea:focus {
-      border-bottom-color: #ffffff;
+      border-color: #ffffff;
     }
-    .form-group textarea {
-      resize: vertical;
-      min-height: 100px;
-    }
-    .btn-submit {
+    .submit-btn {
       align-self: flex-start;
-      margin-top: 10px;
       background: #ffffff;
       color: #000000;
       border: none;
-      padding: 14px 36px;
-      font-family: inherit;
-      font-size: 0.85rem;
+      padding: 16px 40px;
+      font-size: 0.9rem;
       font-weight: 700;
       letter-spacing: 1.5px;
       text-transform: uppercase;
+      border-radius: 4px;
       cursor: pointer;
-      border-radius: 2px;
-      transition: all 0.3s ease;
+      transition: opacity 0.3s, transform 0.2s;
     }
-    .btn-submit:hover {
-      background: #cccccc;
+    .submit-btn:hover {
+      opacity: 0.85;
       transform: translateY(-2px);
     }
 
@@ -352,45 +430,43 @@
       header {
         padding: 20px;
       }
-      .media-loader-bar {
-        top: 75px;
-        right: 20px;
+      .modal-header {
+        padding: 20px;
+      }
+      .modal-video-box {
+        width: 95vw;
+        height: 65vh;
       }
       .hero-section {
         padding: 40px 20px;
       }
-      .content-section {
+      .works-section, .credits-section, .contact-section {
         padding: 60px 20px;
       }
+      .submit-btn {
+        width: 100%;
+      }
       nav ul {
-        gap: 15px;
+        gap: 16px;
       }
       nav a {
-        font-size: 0.75rem;
+        font-size: 0.8rem;
       }
     }
   </style>
 </head>
 <body>
 
-  <!-- 우측 상단: 영상/포스터 즉시 로드 컨트롤러 -->
-  <div class="media-loader-bar">
-    <label class="quick-btn" for="video-upload">🎬 내 영상 바로 재생</label>
-    <input type="file" id="video-upload" accept="video/*" onchange="previewVideo(event)">
-
-    <label class="quick-btn" for="image-upload">🖼️ 포스터 교체</label>
-    <input type="file" id="image-upload" accept="image/*" onchange="previewPoster(event)">
-  </div>
-
-  <!-- 상단 네비게이션 헤더 -->
+  <!-- 상단 네비게이션 헤더 (Work 앞에 Movie 메뉴 배치) -->
   <header>
     <div class="logo">IT-SORI</div>
     <nav>
       <ul>
+        <!-- Movie 클릭 시 전체화면 시네마 모달 열림 -->
+        <li><a href="javascript:void(0)" onclick="openMovie()" class="nav-movie">Movie</a></li>
         <li><a href="#works">Works</a></li>
-        <li><a href="#team">Team</a></li>
+        <li><a href="#credits">Team</a></li>
         <li><a href="#contact">Contact</a></li>
-        <!-- 노션 페이지 바로가기 링크 -->
         <li>
           <a href="https://app.notion.com/p/connect-culturekr/b940f58298094a0796c7f8a784358a15?source=copy_link" target="_blank">
             Notion ↗
@@ -400,11 +476,29 @@
     </nav>
   </header>
 
+  <!-- ================= MOVIE 전체화면 시네마 모달 ================= -->
+  <div id="movieModal" class="movie-modal">
+    <!-- 모달 상단 헤더: 타이틀 + 사운드 토글 + X 닫기 버튼 -->
+    <div class="modal-header">
+      <div class="modal-title">IT-SORI : Teaser Film</div>
+      <div class="modal-controls">
+        <button id="modalSoundBtn" class="modal-sound-btn" onclick="toggleModalSound()">SOUND OFF</button>
+        <button class="modal-close-btn" onclick="closeMovie()" aria-label="Close">✕</button>
+      </div>
+    </div>
+
+    <!-- 큰 화면 비디오 영역 -->
+    <div class="modal-video-box">
+      <video id="modalVideo" playsinline controls>
+        <source src="video.mp4" type="video/mp4" />
+      </video>
+    </div>
+  </div>
+
   <!-- 풀스크린 배경 영상 히어로 섹션 -->
   <section class="hero-section">
     <video class="video-background" autoplay muted loop playsinline id="bg-video">
       <source src="video.mp4" type="video/mp4" />
-      <source src="https://assets.mixkit.co/videos/preview/mixkit-set-of-plateaus-seen-from-the-sky-in-a-sunset-26070-large.mp4" type="video/mp4" />
     </video>
 
     <div class="video-overlay"></div>
@@ -414,31 +508,28 @@
       <h1 class="hero-title">IT-SORI : 잇소리<br>소리로 이어지는 혼(魂)</h1>
       <p class="hero-desc">
         "비바람을 견딘 나무만이, 비로소 노래가 된다."<br>
-        우리가 알던 세계 너머로 — 2026년 우리가 함께 완성한 별자리.
+        가치 없는 기다림은 없다.
       </p>
     </div>
   </section>
 
-  <!-- 1. 포트폴리오 작업물 섹션 (Works) -->
-  <section class="content-section" id="works">
-    <h2 class="section-title">
-      SELECTED WORKS
-      <span>2026 ARCHIVE</span>
-    </h2>
+  <!-- 포트폴리오 작업물 섹션 -->
+  <section class="works-section" id="works">
+    <h2 class="section-title">SELECTED WORKS</h2>
     <div class="work-grid">
       
-      <!-- 첨부해주신 공식 포스터 -->
+      <!-- 1번: 공식 포스터 이미지 -->
       <div class="work-item">
         <div class="work-thumb">
-          <img src="poster.png" id="main-poster" alt="잇소리 공식 포스터" onerror="this.src='https://images.unsplash.com/photo-1518709268805-4e9042af9f23?auto=format&fit=crop&w=800&q=80'" />
+          <img src="poster.png" id="main-poster" alt="잇소리 공식 포스터" />
         </div>
         <div class="work-info">
           <h3>잇소리 : 공식 포스터</h3>
-          <p>Key Art & Character Concept</p>
+          <p>Key Art & Character Visual</p>
         </div>
       </div>
 
-      <!-- 노션 기획서 링크 카드 -->
+      <!-- 2번: 노션 기획서 링크 카드 -->
       <a href="https://app.notion.com/p/connect-culturekr/b940f58298094a0796c7f8a784358a15?source=copy_link" target="_blank" class="work-item">
         <div class="work-thumb" style="display:flex; flex-direction:column; justify-content:center; align-items:center; background:#181818; text-align:center; padding:20px;">
           <div style="font-size:2.8rem; margin-bottom:12px;">📄</div>
@@ -446,118 +537,131 @@
           <p style="color:#777; font-size:0.85rem;">프로젝트 전체 기획서 바로가기 ↗</p>
         </div>
         <div class="work-info">
-          <h3>Project Documentation</h3>
-          <p>Notion Workspace</p>
+          <h3>Project Overview</h3>
+          <p>Notion Documentation</p>
         </div>
       </a>
 
     </div>
   </section>
 
-  <!-- 2. 수업 및 팀원 소개 섹션 (Team & Roles) -->
-  <section class="content-section" id="team" style="border-top: 1px solid #161616;">
-    <h2 class="section-title">
-      TEAM & CREDITS
-      <span>ENTER CULTURE & K-CONTENTS</span>
-    </h2>
-
-    <!-- 수업명 표시 배지 -->
-    <div class="course-badge">
-      수업 과제 : 엔터컬쳐와 K-콘텐츠 (2026학년도 2학기 기말프로젝트)
-    </div>
-
-    <!-- 팀원 이름 및 역할 그리드 -->
-    <div class="team-grid">
-      <div class="team-card">
-        <div class="team-role">팀장 / 총괄 기획</div>
-        <div class="team-name">장현지</div>
-        <div class="team-desc">프로젝트 총괄 매니징, 영상 생성 주도, 사운드 및 편집</div>
+  <!-- 수업 및 제작진 섹션 -->
+  <section class="credits-section" id="credits">
+    <div class="course-badge">엔터컬쳐와 K-콘텐츠 · 2026학년도 2학기 기말프로젝트</div>
+    <h2 class="section-title" style="margin-bottom: 30px;">TEAM & CREDITS</h2>
+    
+    <div class="credits-grid">
+      <div class="credit-box">
+        <div class="role">팀장 / 총괄 기획</div>
+        <h4>장현지</h4>
+        <div class="desc">프로젝트 총괄 매니징, 영상 생성 및 편집, 사운드 디렉팅</div>
       </div>
 
-      <div class="team-card">
-        <div class="team-role">시나리오 & 콘티</div>
-        <div class="team-name">정서윤</div>
-        <div class="team-desc">캐릭터 디자인 기획, 대사 및 서사 흐름 설계, 콘티 제작</div>
+      <div class="credit-box">
+        <div class="role">시나리오 & 콘티</div>
+        <h4>정서윤</h4>
+        <div class="desc">스토리텔링 구체화, 대사 흐름 및 캐릭터 콘티 설계</div>
       </div>
 
-      <div class="team-card">
-        <div class="team-role">시나리오 & 연출</div>
-        <div class="team-name">김동규</div>
-        <div class="team-desc">시나리오 및 콘티 구성, 연출 디테일 구체화, 비주얼 기획</div>
+      <div class="credit-box">
+        <div class="role">시나리오 & 콘티</div>
+        <h4>김동규</h4>
+        <div class="desc">시나리오 및 콘티 기획, 캐릭터 비주얼 디자인 설계</div>
       </div>
 
-      <div class="team-card">
-        <div class="team-role">AI 영상 생성 & 편집</div>
-        <div class="team-name">주유정</div>
-        <div class="team-desc">AI 영상 프롬프트 설계 및 생성 주도, AI 사운드 및 최종 편집</div>
+      <div class="credit-box">
+        <div class="role">영상 & 사운드</div>
+        <h4>주유정</h4>
+        <div class="desc">AI 영상 생성 주도, 영상 편집 및 AI 사운드 제작</div>
       </div>
     </div>
   </section>
 
-  <!-- 3. 문의하기 섹션 (hyunz2j@gmail.com 메일 바로 전송) -->
-  <section class="content-section" id="contact" style="border-top: 1px solid #161616;">
-    <h2 class="section-title">
-      CONTACT
-      <span>INQUIRY</span>
-    </h2>
-
+  <!-- 문의사항 (CONTACT) 섹션 : hyunz2j@gmail.com 연동 -->
+  <section class="contact-section" id="contact">
     <div class="contact-container">
-      <p class="contact-desc">
-        프로젝트에 대한 문의사항이나 피드백을 남겨주시면 총괄 기획자(장현지)의 메일로 바로 전달됩니다.
-      </p>
-
-      <!-- 
-        FormSubmit API를 통해 서버 없이도 hyunz2j@gmail.com으로 바로 전송됩니다.
-      -->
-      <form action="https://formsubmit.co/hyunz2j@gmail.com" method="POST" class="contact-form">
-        <!-- 스팸 방지 및 리다이렉트 설정 -->
+      <h2 class="section-title">CONTACT</h2>
+      <p class="contact-desc">프로젝트 관련 문의사항이나 피드백을 남겨주시면 지정된 담당자 메일(hyunz2j@gmail.com)로 즉시 전달됩니다.</p>
+      
+      <form class="contact-form" action="https://formsubmit.co/hyunz2j@gmail.com" method="POST">
         <input type="hidden" name="_subject" value="[잇소리 웹사이트] 새로운 문의사항이 접수되었습니다.">
         <input type="hidden" name="_captcha" value="false">
 
         <div class="form-group">
-          <label for="name">성함 / 기관명</label>
-          <input type="text" id="name" name="name" placeholder="홍길동" required>
+          <label for="name">성함 / 단체명</label>
+          <input type="text" id="name" name="name" placeholder="이름을 입력해주세요" required>
         </div>
 
         <div class="form-group">
-          <label for="email">회신받으실 이메일 주소</label>
+          <label for="email">답변받으실 이메일</label>
           <input type="email" id="email" name="email" placeholder="example@email.com" required>
         </div>
 
         <div class="form-group">
-          <label for="message">문의 내용</label>
-          <textarea id="message" name="message" placeholder="프로젝트 문의 및 메시지를 입력해주세요." required></textarea>
+          <label for="message">문의내용</label>
+          <textarea id="message" name="message" rows="5" placeholder="문의하실 내용을 작성해주세요" required></textarea>
         </div>
 
-        <button type="submit" class="btn-submit">전송하기 (Send Mail)</button>
+        <button type="submit" class="submit-btn">보내기 (SEND)</button>
       </form>
     </div>
   </section>
 
   <!-- 푸터 -->
   <footer>
-    <div>© 2026 TEAM 잇소리. [엔터컬쳐와 K-콘텐츠]. All rights reserved.</div>
-    <div>hyunz2j@gmail.com</div>
+    <div>© 2026 TEAM 잇소리. All rights reserved.</div>
+    <div>엔터컬쳐와 K-콘텐츠</div>
   </footer>
 
-  <!-- 브라우저에서 내 영상/이미지를 즉시 로드해서 보는 스크립트 -->
+  <!-- ================= MOVIE 모달 제어 스크립트 ================= -->
   <script>
-    function previewVideo(event) {
-      const file = event.target.files[0];
-      if (file) {
-        const video = document.getElementById('bg-video');
-        video.src = URL.createObjectURL(file);
-        video.play();
-      }
+    const movieModal = document.getElementById('movieModal');
+    const modalVideo = document.getElementById('modalVideo');
+    const modalSoundBtn = document.getElementById('modalSoundBtn');
+    const bgVideo = document.getElementById('bg-video');
+
+    // 1. Movie 전체화면 열기
+    function openMovie() {
+      movieModal.classList.add('active');
+      document.body.style.overflow = 'hidden'; // 배경 스크롤 방지
+      
+      modalVideo.currentTime = 0;
+      modalVideo.muted = false; // 소리 켠 채로 시작
+      modalVideo.play().then(() => {
+        modalSoundBtn.innerText = "SOUND ON";
+      }).catch(() => {
+        // 브라우저 정책상 차단될 경우 음소거로 재생
+        modalVideo.muted = true;
+        modalSoundBtn.innerText = "SOUND OFF";
+        modalVideo.play();
+      });
+
+      // 배경 무한루프 영상은 일시정지 (성능 및 소리 겹침 방지)
+      if (bgVideo) bgVideo.pause();
     }
 
-    function previewPoster(event) {
-      const file = event.target.files[0];
-      if (file) {
-        const poster = document.getElementById('main-poster');
-        poster.src = URL.createObjectURL(file);
-      }
+    // 2. Movie 전체화면 닫기 (X 버튼)
+    function closeMovie() {
+      movieModal.classList.remove('active');
+      document.body.style.overflow = 'auto'; // 스크롤 복구
+      modalVideo.pause();
+
+      // 배경 영상 다시 재생
+      if (bgVideo) bgVideo.play();
     }
+
+    // 3. 소리 켜기 / 끄기 토글
+    function toggleModalSound() {
+      modalVideo.muted = !modalVideo.muted;
+      modalSoundBtn.innerText = modalVideo.muted ? "SOUND OFF" : "SOUND ON";
+    }
+
+    // 4. 키보드 ESC 키를 눌러도 닫히도록 편의 기능 추가
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && movieModal.classList.contains('active')) {
+        closeMovie();
+      }
+    });
   </script>
 
 </body>
