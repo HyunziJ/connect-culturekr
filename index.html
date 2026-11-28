@@ -146,7 +146,7 @@
     }
 
     /* ===================================================
-       MOVIE 전체화면 시네마 모달 (Theater Mode)
+       1. MOVIE 전체화면 시네마 모달 (Theater Mode)
        =================================================== */
     .movie-modal {
       position: fixed;
@@ -169,8 +169,6 @@
       opacity: 1;
       visibility: visible;
     }
-
-    /* 모달 상단 컨트롤 바 */
     .modal-header {
       position: absolute;
       top: 0;
@@ -194,8 +192,6 @@
       align-items: center;
       gap: 20px;
     }
-
-    /* 사운드 ON/OFF 버튼 */
     .modal-sound-btn {
       background: rgba(255, 255, 255, 0.08);
       border: 1px solid rgba(255, 255, 255, 0.25);
@@ -212,8 +208,6 @@
       background: #fff;
       color: #000;
     }
-
-    /* 우측 상단 X 닫기 버튼 */
     .modal-close-btn {
       background: transparent;
       border: none;
@@ -231,8 +225,6 @@
       opacity: 1;
       transform: scale(1.15) rotate(90deg);
     }
-
-    /* 비디오 플레이어 뷰 */
     .modal-video-box {
       width: 90vw;
       max-width: 1400px;
@@ -240,7 +232,6 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      position: relative;
     }
     .modal-video-box video {
       width: 100%;
@@ -249,6 +240,63 @@
       border-radius: 8px;
       box-shadow: 0 25px 60px rgba(0, 0, 0, 0.9);
       outline: none;
+    }
+
+    /* ===================================================
+       2. POSTER 전체화면 라이트박스 모달
+       =================================================== */
+    .poster-modal {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: rgba(5, 5, 5, 0.95);
+      backdrop-filter: blur(25px);
+      z-index: 9999;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+      cursor: zoom-out;
+    }
+    .poster-modal.active {
+      opacity: 1;
+      visibility: visible;
+    }
+    .poster-modal-header {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      padding: 30px 50px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      z-index: 10001;
+      pointer-events: none;
+    }
+    .poster-modal-header * {
+      pointer-events: auto;
+    }
+    .poster-modal-box {
+      width: 90vw;
+      max-width: 900px;
+      height: 85vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .poster-modal-box img {
+      max-width: 100%;
+      max-height: 100%;
+      object-fit: contain;
+      border-radius: 6px;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.9);
+      cursor: default;
     }
 
     /* 포트폴리오 작업물 섹션 (Works) */
@@ -282,6 +330,7 @@
       overflow: hidden;
       margin-bottom: 15px;
       transition: transform 0.4s ease;
+      position: relative;
     }
     .work-thumb img {
       width: 100%;
@@ -430,12 +479,16 @@
       header {
         padding: 20px;
       }
-      .modal-header {
+      .modal-header, .poster-modal-header {
         padding: 20px;
       }
       .modal-video-box {
         width: 95vw;
         height: 65vh;
+      }
+      .poster-modal-box {
+        width: 95vw;
+        height: 75vh;
       }
       .hero-section {
         padding: 40px 20px;
@@ -457,12 +510,11 @@
 </head>
 <body>
 
-  <!-- 상단 네비게이션 헤더 (Work 앞에 Movie 메뉴 배치) -->
+  <!-- 상단 네비게이션 헤더 -->
   <header>
     <div class="logo">IT-SORI</div>
     <nav>
       <ul>
-        <!-- Movie 클릭 시 전체화면 시네마 모달 열림 -->
         <li><a href="javascript:void(0)" onclick="openMovie()" class="nav-movie">Movie</a></li>
         <li><a href="#works">Works</a></li>
         <li><a href="#credits">Team</a></li>
@@ -478,7 +530,6 @@
 
   <!-- ================= MOVIE 전체화면 시네마 모달 ================= -->
   <div id="movieModal" class="movie-modal">
-    <!-- 모달 상단 헤더: 타이틀 + 사운드 토글 + X 닫기 버튼 -->
     <div class="modal-header">
       <div class="modal-title">IT-SORI : Teaser Film</div>
       <div class="modal-controls">
@@ -487,11 +538,22 @@
       </div>
     </div>
 
-    <!-- 큰 화면 비디오 영역 -->
     <div class="modal-video-box">
       <video id="modalVideo" playsinline controls>
         <source src="video.mp4" type="video/mp4" />
       </video>
+    </div>
+  </div>
+
+  <!-- ================= POSTER 전체화면 모달 (신규 추가) ================= -->
+  <div id="posterModal" class="poster-modal" onclick="closePosterOnBackdrop(event)">
+    <div class="poster-modal-header">
+      <div class="modal-title">IT-SORI : Official Poster</div>
+      <button class="modal-close-btn" onclick="closePoster()" aria-label="Close">✕</button>
+    </div>
+
+    <div class="poster-modal-box">
+      <img src="poster.png" id="modalPosterImg" alt="잇소리 공식 포스터 전체화면" onclick="event.stopPropagation()" />
     </div>
   </div>
 
@@ -518,13 +580,13 @@
     <h2 class="section-title">SELECTED WORKS</h2>
     <div class="work-grid">
       
-      <!-- 1번: 공식 포스터 이미지 -->
-      <div class="work-item">
+      <!-- 1번: 공식 포스터 이미지 (클릭 시 전체화면 확대) -->
+      <div class="work-item" onclick="openPoster()">
         <div class="work-thumb">
           <img src="poster.png" id="main-poster" alt="잇소리 공식 포스터" />
         </div>
         <div class="work-info">
-          <h3>잇소리 : 공식 포스터</h3>
+          <h3>잇소리 : 공식 포스터 <span>(Click to View)</span></h3>
           <p>Key Art & Character Visual</p>
         </div>
       </div>
@@ -613,53 +675,68 @@
     <div>엔터컬쳐와 K-콘텐츠</div>
   </footer>
 
-  <!-- ================= MOVIE 모달 제어 스크립트 ================= -->
+  <!-- ================= 인터랙션 스크립트 ================= -->
   <script>
+    /* 1. MOVIE 모달 관련 */
     const movieModal = document.getElementById('movieModal');
     const modalVideo = document.getElementById('modalVideo');
     const modalSoundBtn = document.getElementById('modalSoundBtn');
     const bgVideo = document.getElementById('bg-video');
 
-    // 1. Movie 전체화면 열기
     function openMovie() {
       movieModal.classList.add('active');
-      document.body.style.overflow = 'hidden'; // 배경 스크롤 방지
+      document.body.style.overflow = 'hidden';
       
       modalVideo.currentTime = 0;
-      modalVideo.muted = false; // 소리 켠 채로 시작
+      modalVideo.muted = false;
       modalVideo.play().then(() => {
         modalSoundBtn.innerText = "SOUND ON";
       }).catch(() => {
-        // 브라우저 정책상 차단될 경우 음소거로 재생
         modalVideo.muted = true;
         modalSoundBtn.innerText = "SOUND OFF";
         modalVideo.play();
       });
 
-      // 배경 무한루프 영상은 일시정지 (성능 및 소리 겹침 방지)
       if (bgVideo) bgVideo.pause();
     }
 
-    // 2. Movie 전체화면 닫기 (X 버튼)
     function closeMovie() {
       movieModal.classList.remove('active');
-      document.body.style.overflow = 'auto'; // 스크롤 복구
+      document.body.style.overflow = 'auto';
       modalVideo.pause();
-
-      // 배경 영상 다시 재생
       if (bgVideo) bgVideo.play();
     }
 
-    // 3. 소리 켜기 / 끄기 토글
     function toggleModalSound() {
       modalVideo.muted = !modalVideo.muted;
       modalSoundBtn.innerText = modalVideo.muted ? "SOUND OFF" : "SOUND ON";
     }
 
-    // 4. 키보드 ESC 키를 눌러도 닫히도록 편의 기능 추가
+    /* 2. POSTER 전체화면 모달 관련 (신규) */
+    const posterModal = document.getElementById('posterModal');
+
+    function openPoster() {
+      posterModal.classList.add('active');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closePoster() {
+      posterModal.classList.remove('active');
+      document.body.style.overflow = 'auto';
+    }
+
+    function closePosterOnBackdrop(e) {
+      // 이미지 바깥 배경 클릭 시 닫기
+      if (e.target === posterModal) {
+        closePoster();
+      }
+    }
+
+    /* 3. 키보드 ESC 키로 열려있는 모든 모달 닫기 */
     document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape' && movieModal.classList.contains('active')) {
-        closeMovie();
+      if (e.key === 'Escape') {
+        if (movieModal.classList.contains('active')) closeMovie();
+        if (posterModal.classList.contains('active')) closePoster();
       }
     });
   </script>
