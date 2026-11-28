@@ -8,7 +8,7 @@
   <!-- 구글 폰트 -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;800&family=Pretendard:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;800&family=Noto+Serif+KR:wght@400;600;700&family=Pretendard:wght@300;400;600;700&display=swap" rel="stylesheet">
 
   <style>
     /* 기본 리셋 & 공통 스타일 */
@@ -51,7 +51,7 @@
     nav ul {
       display: flex;
       list-style: none;
-      gap: 32px;
+      gap: 30px;
       align-items: center;
     }
     nav a {
@@ -299,20 +299,122 @@
       cursor: default;
     }
 
+    /* ===================================================
+       3. STORY & SYNOPSIS 섹션
+       =================================================== */
+    .story-section {
+      position: relative;
+      z-index: 10;
+      background: #0b0b0b;
+      padding: 120px 50px;
+      border-bottom: 1px solid #1c1c1c;
+    }
+    .section-title {
+      font-size: 2rem;
+      font-weight: 700;
+      letter-spacing: 1px;
+      margin-bottom: 50px;
+      border-bottom: 1px solid #222;
+      padding-bottom: 20px;
+    }
+
+    /* [수정됨] 노란색 세로줄 제거 및 심플한 미니멀 카드 스타일 */
+    .logline-card {
+      background: #121212;
+      border: 1px solid #1e1e1e;
+      padding: 35px 40px;
+      margin-bottom: 60px;
+      border-radius: 6px;
+    }
+    .logline-card h3 {
+      font-family: 'Noto Serif KR', serif;
+      font-size: 1.3rem;
+      font-weight: 600;
+      color: #f8dfa6;
+      margin-bottom: 12px;
+    }
+    .logline-card p {
+      color: #aaa;
+      font-size: 0.98rem;
+      line-height: 1.7;
+      word-break: keep-all;
+    }
+
+    /* 캐릭터 카드 그리드 */
+    .character-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 30px;
+      margin-bottom: 70px;
+    }
+    .character-card {
+      background: #141414;
+      border: 1px solid #222;
+      border-radius: 6px;
+      padding: 28px;
+      transition: transform 0.3s, border-color 0.3s;
+    }
+    .character-card:hover {
+      transform: translateY(-4px);
+      border-color: #383838;
+    }
+    .character-tag {
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 2px;
+      color: #d8a867;
+      margin-bottom: 8px;
+      text-transform: uppercase;
+    }
+    .character-name {
+      font-size: 1.25rem;
+      font-weight: 700;
+      margin-bottom: 12px;
+    }
+    .character-desc {
+      font-size: 0.88rem;
+      color: #888;
+      line-height: 1.6;
+      word-break: keep-all;
+    }
+
+    /* 4막 시놉시스 타임라인 */
+    .synopsis-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 24px;
+    }
+    .synopsis-card {
+      background: #0f0f0f;
+      border-top: 2px solid #262626;
+      padding: 24px 20px;
+    }
+    .synopsis-act {
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: #777;
+      letter-spacing: 1.5px;
+      margin-bottom: 8px;
+    }
+    .synopsis-title {
+      font-size: 1.05rem;
+      font-weight: 600;
+      margin-bottom: 10px;
+      color: #eee;
+    }
+    .synopsis-text {
+      font-size: 0.84rem;
+      color: #777;
+      line-height: 1.6;
+      word-break: keep-all;
+    }
+
     /* 포트폴리오 작업물 섹션 (Works) */
     .works-section {
       position: relative;
       z-index: 10;
       background: #0b0b0b;
       padding: 120px 50px;
-    }
-    .section-title {
-      font-size: 2rem;
-      font-weight: 700;
-      letter-spacing: 1px;
-      margin-bottom: 60px;
-      border-bottom: 1px solid #222;
-      padding-bottom: 20px;
     }
     .work-grid {
       display: grid;
@@ -493,7 +595,7 @@
       .hero-section {
         padding: 40px 20px;
       }
-      .works-section, .credits-section, .contact-section {
+      .story-section, .works-section, .credits-section, .contact-section {
         padding: 60px 20px;
       }
       .submit-btn {
@@ -516,6 +618,7 @@
     <nav>
       <ul>
         <li><a href="javascript:void(0)" onclick="openMovie()" class="nav-movie">Movie</a></li>
+        <li><a href="#story">Story</a></li>
         <li><a href="#works">Works</a></li>
         <li><a href="#credits">Team</a></li>
         <li><a href="#contact">Contact</a></li>
@@ -545,7 +648,7 @@
     </div>
   </div>
 
-  <!-- ================= POSTER 전체화면 모달 (신규 추가) ================= -->
+  <!-- ================= POSTER 전체화면 라이트박스 모달 ================= -->
   <div id="posterModal" class="poster-modal" onclick="closePosterOnBackdrop(event)">
     <div class="poster-modal-header">
       <div class="modal-title">IT-SORI : Official Poster</div>
@@ -575,7 +678,81 @@
     </div>
   </section>
 
-  <!-- 포트폴리오 작업물 섹션 -->
+  <!-- ================= 3. STORY & CHARACTERS 섹션 ================= -->
+  <section class="story-section" id="story">
+    <h2 class="section-title">THE STORY</h2>
+    
+    <!-- 노란 줄이 제거된 미니멀 로그라인 카드 -->
+    <div class="logline-card">
+      <h3>"같은 산에서 자랐지만 악기가 되는 계절도, 소리도 달랐던 두 나무의 이야기"</h3>
+      <p>
+        장인의 지게에 실려 같은 날 산을 내려왔지만, 곧바로 화려한 북이 된 친구와 달리 마당 처마 밑에서 모진 비바람을 맞아야 했던 오동나무 ‘동이’. 
+        자신이 볼품없어 버려졌다 자책하던 동이가 스스로를 비워내며 마침내 세상에서 가장 맑은 소리를 품은 가야금으로 탄생하는 여정을 담은 3D 힐링 애니메이션입니다.
+      </p>
+    </div>
+
+    <!-- 캐릭터 3인 소개 카드 -->
+    <div class="character-grid">
+      <div class="character-card">
+        <div class="character-tag">Paulownia Tree</div>
+        <h4 class="character-name">동이 (작은 나무)</h4>
+        <p class="character-desc">
+          머리 위에 작은 잎을 틔운 여린 오동나무. 처마 밑에 남겨져 홀로 비바람을 견디며 자신을 비워낸 끝에, 영혼을 어루만지는 맑고 깊은 가야금의 선율로 피어납니다.
+        </p>
+      </div>
+
+      <div class="character-card">
+        <div class="character-tag">Birch Tree</div>
+        <h4 class="character-name">달박 (큰 나무)</h4>
+        <p class="character-desc">
+          크고 단단한 체구의 든든한 박달나무. 장인의 손길을 거쳐 가장 먼저 세상의 심장을 깨우는 웅장한 북이 되며, 훗날 동이의 가야금 소리를 묵묵히 받쳐줍니다.
+        </p>
+      </div>
+
+      <div class="character-card">
+        <div class="character-tag">Master Artisan</div>
+        <h4 class="character-name">악기장 (고흥곤 모티프)</h4>
+        <p class="character-desc">
+          말보다 깊은 손길로 나무의 영혼을 읽어내는 장인. 동이가 비바람 속에서 스스로 울림통을 비워낼 때까지 묵묵히 기다려주고 마침내 그 안의 소리를 깨워줍니다.
+        </p>
+      </div>
+    </div>
+
+    <!-- 4막 시놉시스 서사 흐름 -->
+    <div class="synopsis-grid">
+      <div class="synopsis-card">
+        <div class="synopsis-act">ACT 01</div>
+        <h5 class="synopsis-title">엇갈린 시작</h5>
+        <p class="synopsis-text">새벽 숲을 떠나온 두 나무. 달박은 단숨에 화려한 북이 되지만, 여린 동이는 차가운 문밖 처마 밑에 남겨집니다.</p>
+      </div>
+
+      <div class="synopsis-card">
+        <div class="synopsis-act">ACT 02</div>
+        <h5 class="synopsis-title">비바람의 계절</h5>
+        <p class="synopsis-text">모진 비바람과 눈보라를 견디는 시간. 나무는 수분과 떫은 진액을 비워내며 가장 가볍고 단단한 울림통으로 거듭납니다.</p>
+      </div>
+
+      <div class="synopsis-card">
+        <div class="synopsis-act">ACT 03</div>
+        <h5 class="synopsis-title">장인의 발견</h5>
+        <p class="synopsis-text">비움을 마친 가을, 때를 알고 찾아온 장인의 손끝에서 영롱한 공명이 울리고 명주실을 얹은 가야금이 탄생합니다.</p>
+      </div>
+
+      <div class="synopsis-card">
+        <div class="synopsis-act">ACT 04</div>
+        <h5 class="synopsis-title">하나의 울림</h5>
+        <p class="synopsis-text">대청마루에서 마주한 북과 가야금의 합주. 두 소리가 어우러지는 순간 흑백이던 세상이 찬란한 풀컬러로 피어납니다.</p>
+      </div>
+
+      <div class="synopsis-card">
+        <div class="synopsis-act">EPILOGUE</div>
+        <h5 class="synopsis-title">100년 뒤의 합주</h5>
+        <p class="synopsis-text">100년의 세월을 건너 다음 세대의 연주자들에 의해 다시 울려 퍼지는 두 악기. 전통의 생명은 영원히 이어집니다.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 포트폴리오 작업물 섹션 (Works) -->
   <section class="works-section" id="works">
     <h2 class="section-title">SELECTED WORKS</h2>
     <div class="work-grid">
@@ -712,7 +889,7 @@
       modalSoundBtn.innerText = modalVideo.muted ? "SOUND OFF" : "SOUND ON";
     }
 
-    /* 2. POSTER 전체화면 모달 관련 (신규) */
+    /* 2. POSTER 전체화면 모달 관련 */
     const posterModal = document.getElementById('posterModal');
 
     function openPoster() {
@@ -726,7 +903,6 @@
     }
 
     function closePosterOnBackdrop(e) {
-      // 이미지 바깥 배경 클릭 시 닫기
       if (e.target === posterModal) {
         closePoster();
       }
